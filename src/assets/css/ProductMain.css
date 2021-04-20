@@ -1,0 +1,476 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-wrap{
+    overflow: hidden;
+    width: 80%;
+    margin-top: 30px;
+}
+
+.list-wrap ul{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.list-wrap ul li{
+    width: 16.5%;
+    padding: 0 15px;
+    position: relative;
+}
+
+.list-wrap>ul>li:not(:nth-child(-n+5)) {
+    margin-top: 30px;
+}
+
+.list-wrap ul li .item{
+    text-align: left;
+    display: block;
+    position: relative;
+    height: 100%;
+}
+
+.item:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.item .thumb{
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.item .thumb .emblemArea{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 10px;
+    left: 10px;
+}
+
+.item .block{
+    display: block;
+}
+
+.item .thumb .block{
+    width: 100%;
+    height: 204px;
+    background-color: #e5e5e5;
+}
+
+.item .thumb .block::after{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.02);
+}
+
+.item .thumb .block img{
+    position: absolute;
+    width: auto;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-duration: .2s;
+    animation-name: fadeIn;
+}
+
+.item .info{
+    margin-top: 10px;
+}
+
+.item .flagArea{
+    padding-left: 15px;
+}
+
+.item .info .flag.blue{
+    border: 1px solid #424ba5;
+    color: #424ba5;
+}
+
+.item .info .flag.darkRed {
+    border: 1px solid #d4261f;
+    color: #d4261f;
+}
+
+.item .info .flag{
+    width: auto!important;
+    display: inline-block;
+    font-size: 11px;
+    line-height: 15px;
+    vertical-align: top;
+    padding: 0 4px;
+    margin: 0 4px 5px 0;
+    border-radius: 2px;
+}
+
+.item .info .title{
+    width: 164px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    white-space: normal;
+    widows: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.item .info .title strong{
+    font-weight: 700;
+}
+
+.evaluation{
+    margin-top: 5px;
+}
+
+.evaluation .rating{
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
+}
+
+.evaluation .rating::before{
+    content: "";
+    background: url(//static.lotteon.com/p/display/assets/img/common-icon-star-3-full.svg) no-repeat 50%;
+    background-size: 17px auto;
+    width: 17px;
+    height: 17px;
+    padding-left: 19px;
+}
+
+.evaluation .monthlySold {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -.1px;
+    color: #999;
+}
+
+.evaluation .rating+.monthlySold{
+    position: relative;
+    padding-left: 12px;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -.1px;
+    color: #999;
+}
+
+
+.evaluation .rating+.monthlySold::after{
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 1px;
+    height: 8px;
+    background: #eee;
+    content: "";
+}
+
+.info .price{
+    font-size: 13px;
+    margin-top: 5px;
+    line-height: 1;
+}
+
+.item .info .price .sale {
+    color: #ef2a23;
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: top;
+    margin: 0 4px 0 0;
+    line-height: 17px;
+}
+
+.item .info .price .real {
+    display: inline-block;
+    margin-bottom: 1px;
+    color: #999;
+    line-height: 17px;
+    font-size: 12px;
+    text-decoration: line-through;
+}
+
+.item .info .price .final {
+    line-height: 27px;
+    font-size: 19px;
+    display: inline-block;
+    font-weight: 700;
+}
+
+
+.item .thumb .cart{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 170px;
+    left: 160px;
+    background-image: url("../img/cart.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: 0;
+    outline: 0;
+    opacity: 40%;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+
+
+/* 카테고리 영역 */
+.tabArea{
+    display: table;
+}
+
+.tabArea .scrollArea ul li {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.tabArea .tab{
+    position: relative;
+    margin: 0 5px;
+    padding: 0 10px 29px;
+    border-radius: 0;
+    background-color: transparent;
+    border: 0px;
+}
+
+.tabArea .tab .icon {
+    display: block;
+    position: relative;
+    width: 72px;
+    height: 72px;
+    padding: 0;
+    border-radius: 36px;
+    background-color: #e5e5e5;
+    overflow: hidden;
+}
+
+.tabArea .tab .icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.tabArea .tab .text {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    padding: 0;
+    width: auto;
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: block;
+    white-space: nowrap;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: horizontal;
+    widows: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.scrollArea ul li:first-of-type .tab {
+    margin-left: 0;
+}
+
+.tabArea .tab.on {
+    background-color: transparent;
+}
+
+
+
+
+/* 정렬 조건 영역 */
+.sortListArea {
+    width: 73%;
+    height: 40px;
+    padding: 12px 0;
+    margin: 18px 0 20px;
+    border-bottom: 1px solid #eee;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.sortListArea:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.sortListArea .total {
+    float: left;
+    vertical-align: middle;
+    font-size: 13px;
+    line-height: 40px;
+    letter-spacing: -.02em;
+    color: #757575;
+}
+
+.sortListArea .total span {
+    font-weight: 700;
+    color: #000;
+}
+
+.sortListArea .rightSet {
+    float: right;
+}
+
+.sortListArea .rightSet .boradCheckList {
+    float: left;
+}
+
+.sortListArea .rightSet .boradCheckList ul li {
+    position: relative;
+    display: inline-block;
+    line-height: 40px;
+}
+
+.sortListArea .rightSet .boradCheckList ul li input[type=radio] {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    border: 0;
+    margin-top: -8px;
+    opacity: 0;
+}
+
+.sortListArea .rightSet .boradCheckList ul li input[type=radio]:checked {
+    /* opacity: 1; */
+    background: url("https://static.lotteon.com/p/display/assets/img/icon_board_filter.svg") no-repeat 0 0/16px 16px;
+}
+
+.sortListArea .rightSet .boradCheckList ul li input[type=radio]:checked+label {
+    font-weight: 700;
+    padding-left: 38px;
+    color: #333;
+}
+
+.sortListArea .rightSet .boradCheckList ul li label {
+    font-size: 13px;
+    letter-spacing: -.02em;
+    line-height: 21px;
+    padding-left: 20px;
+    vertical-align: middle;
+    color: #999;
+}
+
+.sortListArea .rightSet .boradCheckList ul li label {
+    font-size: 13px;
+    letter-spacing: -.02em;
+    line-height: 21px;
+    padding-left: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.productContent .sortListArea .rightSet .boradCheckList ul li input[type=radio] {
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    border: 0;
+    margin-top: -8px;
+    opacity: 0;
+}
+
+.paginationWrap.wide {
+    padding: 10px 0 60px;
+}
+
+.paginationWrap.wide:last-child {
+    padding-bottom: 0;
+}
+
+.productContent .paginationWrap {
+    margin-top: 40px;
+}
+
+.paginationWrap:last-child {
+    margin-bottom: 0;
+}
+
+.paginationWrap {
+    position: relative;
+    margin: 30px 0;
+}
+
+.pagination {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 15px;
+    line-height: 1.47;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.pagination .prev {
+    margin: 0 12px 0 0;
+    background: url(//static.lotteon.com/p/display/assets/img/btn_icon_arrow-left_grey.svg) no-repeat 50%;
+}
+.pagination .prev.off {
+    pointer-events: none;
+    background: url(//static.lotteon.com/p/display/assets/img/btn_icon_arrow-left_grey_off.svg) no-repeat 50%;
+}
+
+.pagination .next {
+    margin: 0 0 0 12px;
+    background: url(//static.lotteon.com/p/display/assets/img/btn_icon_arrow-right_grey.svg) no-repeat 50%;
+}
+.pagination .next.off {
+    pointer-events: none;
+    background: url(//static.lotteon.com/p/display/assets/img/btn_icon_arrow-right_grey_off.svg) no-repeat 50%;
+}
+
+.pagination a, .pagination button, .pagination span {
+    font-family: Roboto;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: #999;
+    line-height: 27px;
+    margin: 0 2px;
+    text-indent: -1px;
+}
+
+.hiddenTxt {
+    overflow: hidden;
+    text-indent: -99999px;
+    position: absolute;
+    left: -9999px;
+    top: -999999px;
+}
+
+.pagination a.active, .pagination a:hover, .pagination button.active, .pagination button:hover, .pagination span.active {
+    background-color: #343b4d;
+    border: 1px solid #343b4d;
+    color: #fff;
+}
+

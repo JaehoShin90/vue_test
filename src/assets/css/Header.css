@@ -1,0 +1,54 @@
+
+.headerWrapper{
+    font-size: 0;
+    text-align: center;
+}
+
+.innerContent {
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 92px;
+    text-align: left;
+    padding: 15px 0 16px;
+    height: 91px;
+}
+
+.main .buttonArea {
+    margin: 7px -12px 0 auto;
+    font-size: 0;
+    text-align: right;
+}
+
+.main .buttonArea li {
+    position: relative;
+    display: inline-block;
+    width: 74px;
+    font-size: 13px;
+    line-height: 1.46;
+    letter-spacing: -.3px;
+    text-align: center;
+    color: #333;
+    vertical-align: top;
+}
+
+.main .buttonArea li a.cart, #mainLayout header .main .buttonArea li button.cart {
+    position: relative;
+    background-image: url(//static.lotteon.com/p/common/foCommon/assets/img/icon_cart_black.svg);
+}
+
+.main .buttonArea li a, #mainLayout header .main .buttonArea li button {
+    display: block;
+    width: 100%;
+    padding-top: 37px;
+    background-repeat: no-repeat;
+    background-size: 36px 36px;
+    background-position: center -1px;
+}
