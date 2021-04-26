@@ -98,12 +98,12 @@ export default {
                 this.prdtApiData = (response.data && response.data.catePdList && response.data.catePdList.dataList ? response.data.catePdList : {})
                 this.setLoading(false);
             })
-            .catch(error => console.log(error));
+            .catch(error => this.$log.error(error));
         }
         , setMbCartCnt(){
             getCartCnt({mbNo : this.$store.mbNo})
             .then((response) => this.gVal.mbCartCnt = response.data[0])
-            .catch(error => console.log(error));
+            .catch(error => this.$log.error(error));
         }
         , setSortTypeCd(sortTypeCd){
             this.gVal.pdSortCd = sortTypeCd;

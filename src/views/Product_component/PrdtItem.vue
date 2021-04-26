@@ -109,9 +109,10 @@ export default {
                     alert("장바구니에 담을 수 없는 상품입니다.");
                 }else{
                     alert("장바구니 저장완료");
+                    this.$store.dispatch('GET_MMBR_CART_CNT');
                 }
             })
-            .catch(error => console.log(error));
+            .catch(error => this.$log.error(error));
         }
     }
 }

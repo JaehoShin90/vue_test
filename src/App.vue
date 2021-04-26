@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header></Header>
-    <router-view></router-view>
+    <router-view name="contents"></router-view>
   </div>
 </template>
 
@@ -12,6 +12,9 @@ export default {
   name: 'App'
   , components:{
     Header
+  }
+  , created(){
+      this.$store.dispatch('GET_MMBR_CART_CNT');
   }
 }
 </script>

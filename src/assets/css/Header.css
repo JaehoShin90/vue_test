@@ -52,3 +52,21 @@
     background-size: 36px 36px;
     background-position: center -1px;
 }
+
+.main .buttonArea li a.cart .number.on, #mainLayout header .main .buttonArea li button.cart .number.on {
+    color: #fff;
+    background-color: #ef2a23;
+}
+
+.main .buttonArea li a.cart .number, #mainLayout header .main .buttonArea li button.cart .number {
+    position: absolute;
+    top: -10px;
+    left: 39px;
+    min-width: 9px;
+    padding: 0 8px;
+    line-height: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 14px;
+}

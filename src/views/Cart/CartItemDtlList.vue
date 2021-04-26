@@ -2,13 +2,11 @@
     <ul>
         <li v-for="(dtl, index) in dtlList" :key="dtl.cartSn" class="col-3 withProduct hasDelete">
             <div class="cartProduct order-1 hasCheckbox">
-                <!-- <input :id="'cartProduct' + trNum + '_' + (index + 1)" type="checkbox" class="cur_hand" v-model="itemChk" :value="trNum + '_' + (index + 1)" @click="chkClick"> -->
                 <input :id="'cartProduct' + trNum + '_' + (index + 1)" type="checkbox" class="cur_hand" v-model="itemChk" :value="dtl.cartSn" @click="chkClick(dtl)">
                 <label :for="'cartProduct' + trNum + '_' + (index + 1)" class="blind">{{dtl.spdNm}}</label>
                 <div class="productItem">
                     <div class="productThumb">
                         <a href="#">
-                        <!-- <img :src="(dtl.imgJsn && dtl.imgJsn[0]?dtl.imgJsn[0].origImgFileNm:'')" :alt="dtl.spdNm"></a> -->
                         <img :src="(dtl.imgJsn && dtl.imgJsn[0] ? 
                             ('https://contents.lotteon.com/itemimage' + dtl.imgJsn[0].imgRteNm + dtl.imgJsn[0].imgFileNm)
                             : ''
@@ -29,6 +27,7 @@
                 </div>
             </div>
 
+            <!-- 컴포넌트 분리 -->
             <div class="cartQty order-2">
                 <div class="spinnerBox">
                     <button class="minus" @click="odQtyMinus(dtl)" :class="isMinusDisabled(dtl)">

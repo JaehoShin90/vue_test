@@ -6,22 +6,22 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
     config => {
-      console.log(config);
-      return config
+        // console.log(config);
+        return config
     }
     , error => {
-      console.log(error);
-      return Promise.reject(error);
+        // console.log(error);
+        return Promise.reject(error);
     }
 );
 instance.interceptors.response.use(
     response => {
-      console.log(response);
-      return response;
+        // console.log(response);
+        return response;
     }
     , error => {
-      console.log(error);
-      return Promise.reject(error);
+        // console.log(error);
+        return Promise.reject(error);
     }
 );
 
@@ -34,12 +34,12 @@ const setCartInfo = cartData => {
 }
 
 const getCartCnt = mbNo =>{
-    return instance.get('/api/getOmcartCount', {data:{mbNo}});
+    return instance.get('/api/getOmcartCount',{params:{mbNo:mbNo}});
 }
 
 const getCartList = mbNo => {
-    // return instance.post('/api/getCartFullList', mbNo);
-    return instance.post('/api/getCartListAfterGroupby', mbNo);
+    // return instance.post('/api/getCartList', mbNo);
+    return instance.post('/api/getCartListParallel', mbNo);
 }
 
 const delCartInfo = cartInfo => {

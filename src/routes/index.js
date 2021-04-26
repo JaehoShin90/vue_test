@@ -9,8 +9,8 @@ Vue.use(VueRouter);
 export const router = new VueRouter({
     mode: 'history'
     , routes: [
-        {path: '/Product', name: 'Product', component: Product}
-        , {path: '/PrdtCmpn', name: 'PrdtCmpn', component: PrdtCmpn}
-        , {path: '/Cart', name: 'CartCmpn', component: CartCmpn}
+            {path: '/Product', name: 'Product', components: {contents : Product}}
+        , {path: '/PrdtCmpn', name: 'PrdtCmpn', components: {contents : PrdtCmpn}}
+        , {path: '/Cart', name: 'CartCmpn', components: {contents : CartCmpn}}
     ]
 })

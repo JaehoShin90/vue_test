@@ -14,7 +14,7 @@
         <div class="cartSlideWrapper nonHolidays active" v-if="cartList.length > 0" v-bind:class="{'displayNone':isLoading}">
             <div class="cartSlideWrap">
                 <div class="cartSlideInnerCont">
-                    <div class="cartListWrapper" v-for="(tData, index) in cartList" :key="tData.id">
+                    <div class="cartListWrapper" v-for="(tData, index) in cartList" :key="tData.trNo">
                         <div class="cartHeader">
                             <div class="checkboxSet">
                                 <input :id="'cart0_' + index" :name="'cart0_' + index" type="checkbox" class="cur_hand" :value="index" v-model="vndrAllChk" @click="clkVndrAll(index)">

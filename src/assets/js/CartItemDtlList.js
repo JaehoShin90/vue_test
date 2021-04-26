@@ -1,3 +1,4 @@
+import debounce from 'debounce';
 import {
     delCartInfo
     , updateOmCartOdQty
@@ -12,47 +13,71 @@ var cidlMixin = {
             return (data.odQty == 1 ? "disabled" : "");
         }
         , odQtyPlus(data){
-            if(data.odQty + 1 > data.itmByMaxPurPsbJsn.maxPurQty){
+            if(data.itmByMaxPurPsbJsn.maxPurQty && Number(data.odQty) + 1 > data.itmByMaxPurPsbJsn.maxPurQty){
                 alert("최대 " + data.itmByMaxPurPsbJsn.maxPurQty + "개 까지 구매가 가능한 상품입니다.");
                 return false;
             }
-            data.odQty = data.odQty + 1;
+            data.odQty = Number(data.odQty) + 1;
             // 업체별 전체 금액 계산
             this.setVndrAmnt(data, data.slPrc);
+            console.log("수량 증가");
             this.updateOmCartOdQty(data);
         }
         , odQtyMinus(data){
-            if(data.odQty <= 1){
+            if(Number(data.odQty) <= 1){
                 alert("최소 1개 이상부터 구매가 가능합니다.");
                 return false;
             }
-            data.odQty = data.odQty - 1;
+            data.odQty = Number(data.odQty) - 1;
             // 업체별 전체 금액 계산
             this.setVndrAmnt(data, -1 * data.slPrc);
+            console.log("수량 감소");
             this.updateOmCartOdQty(data);
         }
-        , updateOmCartOdQty(data){
+
+
+        /**
+         * debounce 적용 방법 
+         * 1. debounce
+         * 1.1. 설치 : npm i debounce --s
+         * 1.2. 사용
+         * methods:{
+         *  함수명 : debounce(function(파라미터){함수내용}) 
+         * }
+         * 
+         * 2. lodash
+         * 2.1. 설치 : npm i lodash --s
+         * 2.2. 사용
+         * methods:{
+         *  함수명 : _.debounce(function(파라미터){함수내용}) 
+         * }
+         * 
+         */
+
+        // , updateOmCartOdQty: _.debounce(function(data){
+        , updateOmCartOdQty: debounce(function(data){
+            console.log("이벤트 호출");
             if(data.odQty > 0){
                 updateOmCartOdQty(data)
                 .then((response) => {
                     if(response.status == 200){
-                        console.log("정상변경");
+                        this.$log.debug("정상변경");
                     }
                 })
-                .catch((err) => console.log(err));
+                .catch((err) => this.$log.error(err));
             }
-        }
+        }, 600)
         , keyDownOdQty(event, data){
             this.setVndrAmnt(data, -1 * data.odQty * data.slPrc);
-            if(data.itmByMaxPurPsbJsn.maxPurQty < event.target.value){
-                event.target.value = data.itmByMaxPurPsbJsn.maxPurQty;
-                data.odQty = data.itmByMaxPurPsbJsn.maxPurQty;
+            if(data.itmByMaxPurPsbJsn.maxPurQty && data.itmByMaxPurPsbJsn.maxPurQty < event.target.value){
+                event.target.value = Number(data.itmByMaxPurPsbJsn.maxPurQty);
+                data.odQty = Number(data.itmByMaxPurPsbJsn.maxPurQty);
             }else{
-                data.odQty = event.target.value;
+                data.odQty = Number(event.target.value);
             }
             // 업체별 전체 금액 계산
             this.setVndrAmnt(data, data.odQty * data.slPrc);
-            updateOmCartOdQty(data);
+            this.updateOmCartOdQty(data);
         }
         , keyUpOdQty(event, data){
             if(event.key == "Backspace"){
@@ -62,19 +87,18 @@ var cidlMixin = {
                 data.odQty = 1;
                 // 업체별 전체 금액 계산
                 this.setVndrAmnt(data, data.odQty * data.slPrc);
-                updateOmCartOdQty(data);
+                this.updateOmCartOdQty(data);
             }
         }
         , clkDeleteCart(data){
-            console.log(data.cartSn);
-            delCartInfo(data).then(() => this.updateCartList(data.cartSn))
-            .catch(error => console.log(error));
-        }
-        , updateCartList(cartSn){
-            this.dtlList.splice(cartSn, 1)
-            if(this.dtlList.length == 0){
-                this.$emit("updateCartList", cartSn);
-            }
+            this.$log.debug(data.cartSn);
+            delCartInfo(data)
+            .then(() => {
+                alert("선택하신 상품이 삭제되었습니다.");
+                this.$emit("updateCartList");
+                this.$store.dispatch('GET_MMBR_CART_CNT');
+            })
+            .catch(error => this.$log.error(error));
         }
         , chkClick(dtl){
             this.isItemChkFlag = true;
