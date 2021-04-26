@@ -1,4 +1,4 @@
-import debounce from 'debounce';
+import _ from 'lodash';
 import {
     delCartInfo
     , updateOmCartOdQty
@@ -53,10 +53,11 @@ var cidlMixin = {
          * }
          * 
          */
-
+        // , updateOmCartOdQty: debounce(function(data){
         // , updateOmCartOdQty: _.debounce(function(data){
-        , updateOmCartOdQty: debounce(function(data){
+        , updateOmCartOdQty: _.throttle(function(data){
             console.log("이벤트 호출");
+            console.log("data" + data);
             if(data.odQty > 0){
                 updateOmCartOdQty(data)
                 .then((response) => {
@@ -66,7 +67,7 @@ var cidlMixin = {
                 })
                 .catch((err) => this.$log.error(err));
             }
-        }, 600)
+        }, 500)
         , keyDownOdQty(event, data){
             this.setVndrAmnt(data, -1 * data.odQty * data.slPrc);
             if(data.itmByMaxPurPsbJsn.maxPurQty && data.itmByMaxPurPsbJsn.maxPurQty < event.target.value){
