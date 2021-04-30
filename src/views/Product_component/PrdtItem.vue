@@ -97,7 +97,7 @@ export default {
             // trNo, lrtrNo 삭제 예정. Webclient 사용하여 저장.
             var cartData = [
                 {
-                    "mbNo" : this.$store.state.mbNo
+                    "mbNo" : this.$store.state.mbNo === '' ? sessionStorage.getItem("mbNo") : this.$store.state.mbNo
                     , "spdNo" : data.spdNo
                     , "sitmNo" : data.sitmNo
                     , "odQty" : 1

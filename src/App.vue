@@ -14,7 +14,10 @@ export default {
     Header
   }
   , created(){
-      this.$store.dispatch('GET_MMBR_CART_CNT');
+      if(this.$store.state.mbNo != "" || sessionStorage.getItem("mbNo")){
+        this.$store.dispatch('GET_MMBR_CART_CNT');
+      }
+      
   }
 }
 </script>

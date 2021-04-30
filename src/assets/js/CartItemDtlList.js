@@ -54,8 +54,8 @@ var cidlMixin = {
          * 
          */
         // , updateOmCartOdQty: debounce(function(data){
-        // , updateOmCartOdQty: _.debounce(function(data){
-        , updateOmCartOdQty: _.throttle(function(data){
+        , updateOmCartOdQty: _.debounce(function(data){
+        // , updateOmCartOdQty: _.throttle(function(data){
             console.log("이벤트 호출");
             console.log("data" + data);
             if(data.odQty > 0){

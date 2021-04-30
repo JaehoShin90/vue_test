@@ -95,6 +95,20 @@ button span {
     height: 53px;
     padding: 0 20px 0 19px;
     border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.cartListWrapper .cartHeader .cartArccodian {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.cartListWrapper .cartHeader .cartArccodian label{
+    cursor: pointer;
 }
 
 .cartListWrapper>ul {

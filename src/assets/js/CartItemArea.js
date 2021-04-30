@@ -6,7 +6,8 @@ import {
 var CartItemArea = {
     methods: {
         getCartList(){
-            getCartList({mbNo : this.$store.state.mbNo})
+            var mbNo = this.$store.state.mbNo === '' ? sessionStorage.getItem("mbNo") : this.$store.state.mbNo;
+            getCartList(mbNo)
             .then((response) => {
                 this.isLoading = false;
                 this.cartList = (response.data ? response.data : []);
@@ -67,6 +68,9 @@ var CartItemArea = {
                 this.$emit("setTotalCnt", cnt);
                 this.vndrAmntInfo[index].cnt += cnt;
             }
+        }
+        , testArccordion(row){
+            this.$refs[row][0].$el.style.display = this.$refs[row][0].$el.style.display ==="none" ? "inline-block" : "none";
         }
     }
 }

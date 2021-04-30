@@ -22,7 +22,12 @@
                                     {{tData.trNo}}
                                     <p class="branch">
                                     </p></label>
+                                
                             </div>
+                            <div class="cartArccodian">
+                                <label @click="testArccordion('cart0_' + index)">접기</label>
+                            </div>
+                            
                         </div>
                         <!-- 벤더사 별 상품 리스트 -->
                         <CartItemDtlList 
